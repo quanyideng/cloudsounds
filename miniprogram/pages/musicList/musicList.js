@@ -32,10 +32,15 @@ Page({
           name: res.result.playlist.name
         }
       })
+      this._setMusiclist()
       wx.hideLoading()
     }).catch(err => {
       console.error(err)
     })
+  },
+  // 存储到本地
+  _setMusiclist() {
+    wx.setStorageSync('musiclist', this.data.musiclist)
   },
 
   /**

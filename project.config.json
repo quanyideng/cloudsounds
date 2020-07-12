@@ -25,7 +25,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxbb4492541c5ad890",
@@ -66,7 +66,7 @@
 					"id": 1,
 					"name": "musiclist",
 					"pathName": "pages/musicList/musicList",
-					"query": "playlistId=2852787790",
+					"query": "playlistId=2817114737",
 					"scene": null
 				}
 			]
