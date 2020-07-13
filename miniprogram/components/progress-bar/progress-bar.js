@@ -9,7 +9,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    isSame: Boolean
   },
 
   /**
@@ -26,6 +26,9 @@ Component({
 
   lifetimes: {
     ready() {
+      if(this.properties.isSame && this.data.showTime.totalTime == '00:00') {
+        this._setTime()
+      }
       this._getMovableDis()
       this._bindBGMEvent()
     }
@@ -43,7 +46,7 @@ Component({
         this.data.progress = event.detail.x / (movableAreaWidth - movableViewWidth) * 100
         this.data.movableDis = event.detail.x
         isMoving = true
-        console.log('change', isMoving)
+        // console.log('change', isMoving)
       }
     },
     onTouchEnd() {
@@ -56,7 +59,7 @@ Component({
       // 播放指定时间处的声音
       BackgroundAudioManager.seek(duration * this.data.progress / 100)
       isMoving = false
-      console.log('end', isMoving)
+      // console.log('end', isMoving)
     },
     _getMovableDis() {
       const query = this.createSelectorQuery()
@@ -93,12 +96,14 @@ Component({
       BackgroundAudioManager.onPlay(() => {
         console.log('onPlay')
         isMoving = false
+        this.triggerEvent('musicPlay')
       })
       BackgroundAudioManager.onStop(() => {
         console.log('onStop')
       })
       BackgroundAudioManager.onPause(() => {
         console.log('pause')
+        this.triggerEvent('musicPause')
       })
       BackgroundAudioManager.onWaiting(() => {
         console.log('onWaiting')
@@ -131,6 +136,8 @@ Component({
               ['showTime.currentTime']: `${currentTimeFmt.min}:${currentTimeFmt.sec}`
             })
             currentSec = sec
+            // 歌词联动
+            this.triggerEvent('timeUpdate', {currentTime})
           }
         }
       })
