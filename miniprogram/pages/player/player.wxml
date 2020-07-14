@@ -23,8 +23,8 @@
 
   <!-- 控制面板 -->
   <view class="control">
-    <text class="iconfont icon-shangyishoushangyige" bindtap="onPrev"></text>
-    <text class="iconfont {{isPlaying ? 'icon-zanting' : 'icon-bofang'}}" bindtap="togglePlaying"></text>
-    <text class="iconfont icon-xiayigexiayishou" bindtap="onNext"></text>
+    <text class="iconfont icon-prev" bindtap="onPrev"></text>
+    <text class="iconfont {{isPlaying ? 'icon-pause' : 'icon-play'}}" bindtap="togglePlaying"></text>
+    <text class="iconfont icon-next" bindtap="onNext"></text>
   </view>
 </view>

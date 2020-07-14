@@ -79,12 +79,12 @@
   color: #fefefe;
 }
 
-.icon-shangyishoushangyige, .icon-xiayigexiayishou {
+.icon-prev, .icon-next {
   font-size: 80rpx;
 }
 
-.icon-bofang, .icon-zanting {
-  font-size: 120rpx;
+.icon-play, .icon-pause {
+  font-size: 100rpx;
   margin: 0 50rpx;
 }
 
