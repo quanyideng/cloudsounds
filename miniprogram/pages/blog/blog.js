@@ -1,4 +1,4 @@
-// miniprogram/pages/blog/blog.js
+let keyword = ''
 Page({
 
   /**
@@ -6,7 +6,8 @@ Page({
    */
   data: {
     modelShow: false,
-    blogList: []
+    blogList: [],
+    isNoMoreBlog: false
   },
 
   onPublish() {
@@ -44,19 +45,55 @@ Page({
     })
   },
 
-  _loadBlogList() {
+  _loadBlogList(start = 0) {
+    wx.showLoading({
+      title: '拼命加载中...',
+    })
     wx.cloud.callFunction({
       name: "blog",
       data: {
+        keyword,
+        start,
+        count: 10,
         $url: "list",
-        start: 0,
-        count: 10
       }
     }).then(res => {
+      // 如果这次请求的结果不够十条，那么下一次请求的结果肯定为零，
+      // 随意在这里更新 isNoMoreBlog
+      if(res.result.length < 10) {
+        this.setData({
+          isNoMoreBlog: true
+        })
+      }
       this.setData({
         blogList: this.data.blogList.concat(res.result)
       })
+      wx.hideLoading()
     })
+  },
+
+  _refreshPage() {
+    this.setData({
+      blogList: [],
+      isNoMoreBlog: false
+    })
+    this._loadBlogList()
+  },
+
+  goComment(e) {
+    wx.navigateTo({
+      url: '../../pages/blog-comment/blog-comment?blogId=' + e.target.dataset.blogid,
+    })
+  },
+
+  onSearch(event) {
+    console.log(event.detail.keyword)
+    this.setData({
+      blogList: [],
+      isNoMoreBlog: false
+    })
+    keyword = event.detail.keyword
+    this._loadBlogList(0)
   },
 
   /**
@@ -98,14 +135,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this._refreshPage()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(!this.data.isNoMoreBlog) {
+      this._loadBlogList(this.data.blogList.length)
+    }
   },
 
   /**

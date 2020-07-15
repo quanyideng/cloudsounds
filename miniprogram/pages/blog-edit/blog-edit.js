@@ -71,6 +71,7 @@ Page({
     }
     wx.showLoading({
       title: '发布中...',
+      mask: true
     })
     let promiseArr = []
     let fileIds = []
@@ -110,6 +111,9 @@ Page({
         })
         // 返回 blog 页面并刷新
         wx.navigateBack()
+        const pages = getCurrentPages()
+        const prevPage = pages[pages.length - 2]
+        prevPage._refreshPage()
       })
     }).catch(err => {
       wx.hideLoading()
