@@ -11,3 +11,6 @@
 		<x-playlist playlist="{{item}}"></x-playlist>
 	</block>
 </view>
+
+<!-- 底线 -->
+<x-bottom-line show="{{isContentNoMore}}"/>

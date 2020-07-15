@@ -18,6 +18,9 @@
     </block>
   </view>
 
+  <!-- 底部底线 -->
+  <x-bottom-line show="{{isNoMoreBlog}}"/>
+
   <!-- 底部弹出层 -->
   <x-login 
     modelShow="{{modelShow}}"

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isContentNoMore: false,
     playlist: [],
     swiperImgUrls: [
       {
@@ -59,7 +60,8 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      playlist: []
+      playlist: [],
+      isContentNoMore: false
     })
     this._getPlaylist()
   },
@@ -68,7 +70,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this._getPlaylist()
+    if (!this.data.isContentNoMore) {
+      this._getPlaylist()
+    }
   },
 
   /**
@@ -89,6 +93,12 @@ Page({
         $url: 'playlist'
       }
     }).then(res => {
+      console.log(res.result.data)
+      if (res.result.data.length < MAX_LIMIT) {
+        this.setData({
+          isContentNoMore: true
+        })
+      }
       this.setData({
         playlist: this.data.playlist.concat(res.result.data)
       })
