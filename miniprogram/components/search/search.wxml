@@ -1,5 +1,12 @@
 <view class="container">
-  <i class="iconfont icon-sousuo find"></i>
-  <input class="bar" placeholder="{{placeholder}}" placeholder-class="in-bar" bindinput="onInput"></input>
+  <view class="iconfont icon-ai54 clear" hidden="{{!showClearBtn}}" bindtap="onClear"></view>
+  <input class="bar" 
+    placeholder="{{placeholder}}" 
+    placeholder-class="in-bar" 
+    bindinput="onInput"
+    value="{{inputValue}}"
+  >
+    <i class="iconfont icon-sousuo find"></i>
+  </input>
   <button class="search" bindtap="onSearch">搜索</button>
 </view>

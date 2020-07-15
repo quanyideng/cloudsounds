@@ -12,23 +12,41 @@ Component({
   // 接收外部传入的样式
   externalClasses: [
     'iconfont',
-    'icon-sousuo'
+    'icon-sousuo',
+    "icon-ai54"
   ],
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    showClearBtn: false,
+    inputValue: ''
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onClear() {
+      console.log('keyword')
+      this.setData({
+        inputValue: '',
+        showClearBtn: false
+      })
+      keyword = ''
+    },
     onInput(event) {
       keyword = event.detail.value
-
+      if (keyword.trim() != '') {
+        this.setData({
+          showClearBtn: true
+        })
+      } else {
+        this.setData({
+          showClearBtn: false
+        })
+      }
     },
     onSearch() {
       // console.log(keyword)

@@ -7,6 +7,7 @@
 }
 
 .bar {
+  position: relative;
   flex: auto;
   height: 68rpx;
   font-size: 28rpx;
@@ -29,8 +30,19 @@ button:not([size='mini']) {
 .find {
   position: absolute;
   top: 50%;
-  transform: translate(16rpx, -50%);
+  left: 34rpx;
+  transform: translate(-50%, -50%);
   color: #9f9f9f;
+}
+
+.clear {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  color: #9f9f9f;
+  font-size: 46rpx;
 }
 
 .in-bar {
