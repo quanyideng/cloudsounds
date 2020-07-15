@@ -13,7 +13,7 @@ Component({
   externalClasses: [
     'iconfont',
     'icon-sousuo',
-    "icon-ai54"
+    "icon-qingchuneirong"
   ],
 
   /**
@@ -29,16 +29,16 @@ Component({
    */
   methods: {
     onClear() {
-      console.log('keyword')
+      keyword = ''
       this.setData({
         inputValue: '',
         showClearBtn: false
       })
-      keyword = ''
     },
     onInput(event) {
       keyword = event.detail.value
       if (keyword.trim() != '') {
+        console.log('input')
         this.setData({
           showClearBtn: true
         })

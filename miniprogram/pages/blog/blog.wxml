@@ -5,7 +5,7 @@
       <i class="iconfont icon-fabu"></i>
     </view>
     <view class="search-container">
-      <x-search iconfont="iconfont" icon-sousuo="icon-sousuo" icon-ai54="icon-ai54" bind:search="onSearch"/>
+      <x-search iconfont="iconfont" icon-sousuo="icon-sousuo" icon-qingchuneirong="icon-qingchuneirong" bind:search="onSearch"/>
     </view>
   </view>
 
