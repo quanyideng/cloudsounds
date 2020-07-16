@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    modelShow: Boolean
+    modalShow: Boolean
   },
 
   /**
@@ -23,7 +23,7 @@ Component({
       const {userInfo} = event.detail
       if (userInfo) {
         this.setData({
-          modelShow: false
+          modalShow: false
         })
         this.triggerEvent('loginsuccess', userInfo)
       } else {

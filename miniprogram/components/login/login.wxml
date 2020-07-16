@@ -1,4 +1,4 @@
-<x-bottom-model modelShow="{{modelShow}}">
+<x-bottom-model modalShow="{{modalShow}}">
   <view slot="model-content">
     <button 
       class="login"

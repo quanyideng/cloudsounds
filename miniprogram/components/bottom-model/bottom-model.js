@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    modelShow: Boolean
+    modalShow: Boolean
   },
 
   options: {
@@ -25,7 +25,7 @@ Component({
   methods: {
     onClose() {
       this.setData({
-        modelShow: false
+        modalShow: false
       })
     }
   }

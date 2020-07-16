@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    modelShow: false,
+    modalShow: false,
     blogList: [],
     isNoMoreBlog: false
   },
@@ -24,7 +24,7 @@ Page({
           })
         } else {
           this.setData({
-            modelShow: true
+            modalShow: true
           })
         }
       }
@@ -87,7 +87,7 @@ Page({
   },
 
   onSearch(event) {
-    console.log(event.detail.keyword)
+    // console.log(event.detail.keyword)
     this.setData({
       blogList: [],
       isNoMoreBlog: false
@@ -151,7 +151,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    // console.log(e)
+    let blogObj = e.target.dataset.blog
+    return {
+      title: blogObj.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${blogObj._id}`,
+    }
   }
 })

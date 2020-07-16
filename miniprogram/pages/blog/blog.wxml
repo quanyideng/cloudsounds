@@ -14,6 +14,7 @@
     <block wx:for="{{blogList}}" wx:key="_id" >
       <view class="blog-panel">
         <x-blog-card blog="{{item}}" data-blogid="{{item._id}}" bindtap="goComment"/>
+        <x-blog-ctrl blogId="{{item._id}}" iconfont="iconfont" icon-share="icon-share" icon-pinglun="icon-pinglun" blog="{{item}}"/>
       </view>
     </block>
   </view>
@@ -23,7 +24,7 @@
 
   <!-- 底部弹出层 -->
   <x-login 
-    modelShow="{{modelShow}}"
+    modalShow="{{modalShow}}"
     bind:loginsuccess="onLoginSuccess"
     bind:loginfail="onLoginFail"
   />
