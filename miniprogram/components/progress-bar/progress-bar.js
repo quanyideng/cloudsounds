@@ -21,7 +21,7 @@ Component({
       totalTime: "00:00"
     },
     movableDis: 0,
-    progress: 0
+    progress: 0,
   },
 
   lifetimes: {

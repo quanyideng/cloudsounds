@@ -43,7 +43,7 @@
   width: 192rpx;
   height: 274rpx;
   position: absolute;
-  top: -150rpx;
+  top: -140rpx;
   left: 266rpx;
   background: url('https://s3.music.126.net/m/s/img/needle.png?702cf6d95f29e2e594f53a3caab50e12') no-repeat center/contain;
   transform: rotate(-15deg);
@@ -52,7 +52,7 @@
 }
 
 .play.player-disc::after {
-  transform: rotate(0deg);
+  transform: rotate(2deg);
 }
 
 .player-img {

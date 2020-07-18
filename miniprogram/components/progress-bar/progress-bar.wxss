@@ -19,7 +19,7 @@
 .movable-view {
   width: 36rpx;
   height: 36rpx;
-  background: #641790;
+  background: #d43c43;
   border-radius: 50%;
 }
 

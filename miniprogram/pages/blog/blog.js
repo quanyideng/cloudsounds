@@ -1,4 +1,5 @@
 let keyword = ''
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -58,6 +59,10 @@ Page({
         $url: "list",
       }
     }).then(res => {
+      
+      this.setData({
+        blogList: this.data.blogList.concat(res.result)
+      })
       // 如果这次请求的结果不够十条，那么下一次请求的结果肯定为零，
       // 随意在这里更新 isNoMoreBlog
       if(res.result.length < 10) {
@@ -65,9 +70,6 @@ Page({
           isNoMoreBlog: true
         })
       }
-      this.setData({
-        blogList: this.data.blogList.concat(res.result)
-      })
       wx.hideLoading()
     })
   },
@@ -99,7 +101,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    let { query } = wx.getLaunchOptionsSync()
+    if (query.openid) {
+      console.log('query',query)
+      const res = await db.collection('blog').where({_openid: query.openid})
+      .limit(10).orderBy('createTime', 'desc').get()
+      this.setData({
+        blogList: this.data.blogList.concat(res.result)
+      })
+    }
     this._loadBlogList()
   },
 

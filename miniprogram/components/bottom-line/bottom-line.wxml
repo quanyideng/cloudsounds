@@ -1,3 +1,3 @@
 <view class="container" hidden="{{!show}}">
-  <text class="text">我是有底线的</text>
+  <text class="text">没有更多了</text>
 </view>

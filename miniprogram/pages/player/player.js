@@ -27,6 +27,34 @@ Page({
     this._loadMusicDetail(options.musicid)
   },
 
+  previewAlbum() {
+    wx.previewImage({
+      urls: [this.data.picUrl],
+      current: this.data.picUrl
+    })
+  },
+  // 保存播放历史
+  savePlayerHistory () {
+    // 当前正播放的歌曲
+    const music = musiclist[nowPlayingIndex]
+    const openid = app.globalData.openid
+    const history = wx.getStorageSync(openid)
+    let bHave = false
+    for (let i = 0; i < history.length; i++) {
+      if (history[i].id == music.id) {
+        bHave = true
+        break;
+      }
+    }
+    if (!bHave) {
+      history.unshift(music)
+      wx.setStorage({
+        key: openid,
+        data: history,
+      })
+    }
+  },
+
   _loadMusicDetail(musicId) {
     if(musicId == app.getPlayMusicId()) {
       this.setData({
@@ -50,7 +78,8 @@ Page({
     app.setPlayMusicId(musicId)
     if(!this.data.isSame) {
       wx.showLoading({
-        title: "歌曲加载中"
+        title: "歌曲加载中",
+        mask: true
       })
     }
 
@@ -76,11 +105,15 @@ Page({
         backgroundAudioManager.coverImgUrl = music.al.picUrl
         backgroundAudioManager.singer = music.ar[0].name
         backgroundAudioManager.epname = music.al.name
+        // 保存播放历史
+        this.savePlayerHistory()
       }
+
       this.setData({
         isPlaying: true
       })
       wx.hideLoading()
+      
       // 加载歌词
       wx.cloud.callFunction({
         name: 'music',

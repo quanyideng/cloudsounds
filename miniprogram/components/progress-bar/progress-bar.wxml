@@ -4,7 +4,7 @@
     <movable-area class="movable-area">
       <movable-view 
         direction="horizontal"
-        class="movable-view "
+        class="movable-view"
         damping="1000"
         x="{{movableDis}}"
         bindchange="onChange"

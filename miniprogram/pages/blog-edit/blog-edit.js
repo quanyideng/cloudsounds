@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    content: '',
     wordsNum: 0,
     footerBottom: 0,
     images: [],
@@ -17,7 +18,7 @@ Page({
   },
 
   onInput(e) {
-    content = e.detail.value
+    this.data.content = e.detail.value
     let wordsNum = e.detail.value.length
     if (wordsNum >= MAX_WORDS_NUM) {
       wordsNum = `最大字数为${MAX_WORDS_NUM}`
@@ -62,7 +63,7 @@ Page({
   },
 
   send() {
-    if(content.trim() === '') {
+    if(this.data.content.trim() === '') {
       wx.showModal({
         title: '请输入内容',
         content: ''
@@ -99,8 +100,9 @@ Page({
     .then(res => {
       db.collection('blog').add({
         data: {
-          ...userInfo,
-          content,
+          content:this.data.content,
+          nickName: userInfo.nickName,
+          avatarUrl: userInfo.avatarUrl,
           img: fileIds,
           createTime: db.serverDate(),// 服务端的时间
         }
@@ -147,7 +149,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     userInfo = options
   },
 
@@ -162,7 +164,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
