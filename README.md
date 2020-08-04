@@ -4,28 +4,28 @@
 
 * **首页**
 
-  ![homePage](https://i.loli.net/2020/08/04/rQxDhcGJXWHb439.gif)
+  ![homePage](https://s1.ax1x.com/2020/08/04/aDZitA.gif)
 
   
 
 * **博客**
 
-  ![blog](https://i.loli.net/2020/08/04/6a1FYyPCnvER2bI.gif)
+  ![blog](https://s1.ax1x.com/2020/08/04/aDZSmD.gif)
 
   
 
 * **我的**
 
-  ![profile](https://i.loli.net/2020/08/04/DoPxjGgZXSVaLhR.gif)
+  ![profile](https://s1.ax1x.com/2020/08/04/aDZPkd.gif)
 
   
 
 * **歌单及播放页**
 
-  ![play](C:\Users\Administrator\Pictures\play.gif)
+  ![play](https://s1.ax1x.com/2020/08/04/aDZZX8.gif)
 
   
 
 * **评论及分享**
 
-  ![comment](https://i.loli.net/2020/08/04/gm3enYyfSMDGjWV.gif)
+  ![comment](https://s1.ax1x.com/2020/08/04/aDZSmD.gif)
