@@ -1,4 +1,4 @@
-const MAX_WORDS_NUM = 140
+const MAX_WORDS_NUM = 150
 const MAX_IMG_NUM = 9
 const db = wx.cloud.database()
 // 输入的文字内容
@@ -71,7 +71,7 @@ Page({
       return 
     }
     wx.showLoading({
-      title: '发布中...',
+      title: '上传中...',
       mask: true
     })
     let promiseArr = []
@@ -109,7 +109,7 @@ Page({
       }).then(res => {
         wx.hideLoading()
         wx.showToast({
-          title: '发布成功',
+          title: '上传成功',
         })
         // 返回 blog 页面并刷新
         wx.navigateBack()
@@ -120,7 +120,7 @@ Page({
     }).catch(err => {
       wx.hideLoading()
       wx.showToast({
-        title: '发布失败',
+        title: '上传失败',
       })
     })
   },

@@ -1,5 +1,5 @@
 <view class="container">
-  <textarea class="content" placeholder="分享新鲜事..."
+  <textarea class="content" placeholder="写下此刻你的想法..."
     bindinput="onInput" maxlength="140" auto-focus
     bindfocus="onFocus" bindblur="onBlur"
   ></textarea>
@@ -20,5 +20,5 @@
 
 <view class="footer" style="bottom:{{footerBottom}}px">
   <text class="words-num">{{wordsNum}}</text>
-  <button class="send-btn" bindtap="send">发布</button>
+  <button class="send-btn" bindtap="send">上传</button>
 </view>

@@ -110,7 +110,6 @@ Component({
       })
       BackgroundAudioManager.onCanplay(() => {
         console.log('onCanplay')
-        // console.log(BackgroundAudioManager.duration)
         if (typeof BackgroundAudioManager.duration != 'undefined') {
           this._setTime()
         } else {
